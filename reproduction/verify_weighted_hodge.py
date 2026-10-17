@@ -34,7 +34,7 @@ def integrate_system(n, M, A=2., Delta=.8, nq=12, weighted=True):
                 ([(0,j,k),(1,j,k),(0,j,k+1)],[P(j,k),Q(j,k),P(j,k+1)]),
                 ([(0,j,k+1),(1,j,k),(1,j,k+1)],[P(j,k+1),Q(j,k),Q(j,k+1)]),
                 ([(1,j,k),(0,j+1,k),(0,j+1,k+1)],[Q(j,k),P(j+1,k),P(j+1,k+1)]),
-                ([(1,j,k),(0,j+1,k+1),(1,j,k+1)],[Q(j,k),P(j+1,k),Q(j,k+1)]),
+                ([(1,j,k),(0,j+1,k+1),(1,j,k+1)],[Q(j,k),P(j+1,k+1),Q(j,k+1)]),
             ]
             for vi,pts in cells:
                 ids = [idx(*v) for v in vi]

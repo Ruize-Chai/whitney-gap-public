@@ -46,6 +46,7 @@ gap² = e_h² / (A + e_h²).
 - Python 3.10+
 - NumPy 1.24+
 - SciPy 1.10+
+- Matplotlib 3.7+ (figure generation)
 
 Install:
 
@@ -61,17 +62,19 @@ Run from the repository root:
 python reproduction/check_mesh_topology.py
 python reproduction/verify_exact_assembly.py
 python reproduction/verify_weighted_hodge.py
+python reproduction/make_figures.py
 ```
 
-Each script prints per-grid diagnostics and terminates with a `PASS` line after its assertions succeed.
+The three verification scripts print per-grid diagnostics and terminate with a `PASS` line after their assertions succeed. The figure-generation script writes PDF/PNG files to `figures/`.
 
 | Script | Independent check | Default test set |
 | --- | --- | --- |
 | `check_mesh_topology.py` | Periodic vertex/edge/face counts, Euler characteristic, nondegenerate and unique simplices; also exhibits the excluded `M=2` case | `(n,M)=(3,2),(3,4),(4,4),(5,6),(8,32)` |
 | `verify_exact_assembly.py` | Direct triangle-by-triangle *unweighted* P1 stiffness/load assembly against the exact Fourier formula | `(4,8),(6,18),(8,32),(10,50),(12,72)` |
 | `verify_weighted_hodge.py` | Direct quadrature of the warped metric, Ritz energy bounds, and principal-angle formula via a separately integrated Gram calculation | `(4,8),(6,18),(8,32),(10,50)` |
+| `make_figures.py` | Rebuilds the three-regime scalar-energy plot and the periodic zig-zag mesh illustration | `n=8,…,256` and illustrative `M=8, n=5` |
 
-Default numerical settings are `A=2`, `Δ=0.8` for the metric-weighted checks, `Δ=0.8` for the unweighted check, and 12-point Gauss–Legendre quadrature per transformed triangle coordinate.
+Default numerical settings are `A=2`, `Δ=0.8` for the metric-weighted checks, `Δ=0.8` for the unweighted check, and 12-point Gauss–Legendre quadrature per transformed triangle coordinate. Plot PDFs use black-and-white-friendly line styles; no display server is required.
 
 ### Representative outputs
 
